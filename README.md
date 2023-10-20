@@ -47,7 +47,7 @@ git clone https://github.com/JeysonhT/CultiGestApp/
 
 ## Contribuir
 
-¡Apreciamos tu interés en contribuir a AgriculturaInfo! Si deseas hacer una contribución, por favor consulta nuestra [guía de contribución](CONTRIBUTING.md).
+¡Apreciamos tu interés en contribuir a CultiGest! Si deseas hacer una contribución, por favor consulta nuestra [guía de contribución](CONTRIBUTING.md).
 
 ---
 © 2023 CultiGest. Hecho con ❤️ por [Jeysonh](https://github.com/JeysonhT/CultiGestApp).
