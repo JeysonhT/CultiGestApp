@@ -36,6 +36,6 @@ public class User {
         Password = password;
         this.isAgronomist = isAgronomist;
     }
-
+    
 
 }

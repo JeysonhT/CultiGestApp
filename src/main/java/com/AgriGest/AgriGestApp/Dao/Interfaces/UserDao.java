@@ -14,6 +14,6 @@ public interface UserDao{
 
     ResponseEntity<String> postUser(User user);
 
-    ResponseEntity<String> LoginUser();
+    User VerificarUser(User user);
 
 }
