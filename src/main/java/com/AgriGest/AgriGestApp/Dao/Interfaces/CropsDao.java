@@ -13,6 +13,6 @@ public interface CropsDao {
 
     void deleteCrops(String Id);
 
-    ResponseEntity<String> postCrops(Crops crops);
+    ResponseEntity<String> postCrops(Crops crops, String email);
  
 }

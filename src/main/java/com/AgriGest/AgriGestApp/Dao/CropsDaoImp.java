@@ -14,7 +14,7 @@ import com.AgriGest.AgriGestApp.Models.Crops;
 import com.AgriGest.AgriGestApp.Models.User;
 
 @Repository
-@Profile("mongobd")
+@Profile(value = "mongodb")
 public class CropsDaoImp implements CropsDao{
 
     @Autowired
@@ -24,8 +24,8 @@ public class CropsDaoImp implements CropsDao{
     @Override
     public List<Crops> getCrops(User user) {
         Query query = new Query();
-        query.addCriteria(Criteria.where("User").is(user));
-        return operations.find(query, Crops.class, "Crops");
+        query.addCriteria(Criteria.where("user").is(user));
+        return operations.find(query, Crops.class);
     }
 
     @Override
@@ -35,16 +35,26 @@ public class CropsDaoImp implements CropsDao{
         operations.remove(query, Crops.class, "Crops");
     }
 
+    /*
+     * Este metodo se encarga de resgirtar un nuevo cultivo, asociandolo a un usuario buscado
+     * el email en la coleccion de usuarios para asociarlo como un objeto dentro del documento
+     * del cultivo en MongoDb.
+     */
     @Override
-    public ResponseEntity<String> postCrops(Crops crops) {
-        if(crops != null){
-            operations.save(crops, "Crops");
-            return ResponseEntity.ok("Cultivo Guardado");
-        }else{
-            return ResponseEntity.badRequest().body("Objeto nulo");
-        }
-    }
+    public ResponseEntity<String> postCrops(Crops crops, String email) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("Email").is(email));
 
-    
-    
+        List<User> usuario = operations.find(query, User.class);
+
+        if(usuario.isEmpty()){
+            return ResponseEntity.badRequest().body("usuario no encontrado");
+        }
+
+        crops.setUsuario(usuario.get(0));
+
+        operations.save(crops, "Crops");
+        return ResponseEntity.ok("status 200");
+    }   
+  
 }
