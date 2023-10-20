@@ -32,7 +32,7 @@ public class CropsDaoImp implements CropsDao{
     public void deleteCrops(String Id) {
         Query query = new Query();
         query.addCriteria(Criteria.where(Id).is("Id_Crops"));
-       operations.remove(query, Crops.class, "Crops");
+        operations.remove(query, Crops.class, "Crops");
     }
 
     @Override
@@ -41,7 +41,7 @@ public class CropsDaoImp implements CropsDao{
             operations.save(crops, "Crops");
             return ResponseEntity.ok("Cultivo Guardado");
         }else{
-            return ResponseEntity.badRequest().body("Cultivo nulo");
+            return ResponseEntity.badRequest().body("Objeto nulo");
         }
     }
 
