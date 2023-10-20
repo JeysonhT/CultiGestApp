@@ -2,36 +2,35 @@ package com.AgriGest.AgriGestApp.Models;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
-import org.springframework.data.mongodb.core.mapping.MongoId;
-import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.data.mongodb.core.mapping.MongoId;   
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-@Document("Crops")
+@Document(collection = "Crops")
 public class Crops {
 
     @MongoId
-    private String Id_Crops;
-    @Field("Name")
-    private String Name;
-    @Field("AreaCultivo")
-    private String AreaCultivo;
-    @Field("seedTime") @DateTimeFormat(style = "M")
-    private String seedTime;
-    @Field("user")
-    private User user;
+    private String Id;
+    @Field("name")
+    private String name;
+    @Field("areacultivo")
+    private String areacultivo;
+    @Field("seedtime") 
+    private String seedtime;
+    @Field("usuario")
+    private User usuario;
     
     public Crops() {
     }
 
-    public Crops(String id_Crops, String name, String areaCultivo, String seedTime, User user) {
-        Id_Crops = id_Crops;
-        Name = name;
-        AreaCultivo = areaCultivo;
-        this.seedTime = seedTime;
-        this.user = user;
+    public Crops(String id, String name, String areacultivo, String seedtime, User usuario) {
+        Id = id;
+        this.name = name;
+        this.areacultivo = areacultivo;
+        this.seedtime = seedtime;
+        this.usuario = usuario;
     }
 
 }

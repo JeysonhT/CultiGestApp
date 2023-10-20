@@ -80,10 +80,11 @@ public class UserDaoImp implements UserDao {
     //metodo de Inicio de sesion para usuarios previamente Registrados
     @Override
     public User VerificarUser(User user) {
-        Query query = new Query();
-        query.addCriteria(Criteria.where("email"));
 
-        List<User> lista = operations.find(query, User.class, "User");
+        //Query query = new Query();
+        //query.addCriteria(Criteria.where("email").is(user.getEmail()));
+
+        List<User> lista = operations.find(Query.query(Criteria.where("email").is(user.getEmail())), User.class);
 
         if(lista.isEmpty()){
             return null;
