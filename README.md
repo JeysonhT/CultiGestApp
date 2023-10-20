@@ -1,7 +1,7 @@
 # CultiGestApp
 Este repositorio esta dedicado al codigo del backend de la Pagina web Cultigest, el cual utiliza la arquitectura MVC 
 
-# AgriculturaInfo Backend
+# CultiGest Backend
 
 ![Java](https://img.shields.io/badge/Java-11-brightgreen)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.5-brightgreen)
@@ -9,7 +9,7 @@ Este repositorio esta dedicado al codigo del backend de la Pagina web Cultigest,
 ![Argon2](https://img.shields.io/badge/Argon2-2.0.17-blue)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4.4.9-brightgreen)
 
-¡Bienvenido al backend de AgriculturaInfo, una aplicación web informativa revolucionaria para la industria agrícola!
+¡Bienvenido al backend de CultiGest, una aplicación web informativa revolucionaria para la industria agrícola!
 
 ## Descripción
 
@@ -47,7 +47,7 @@ git clone https://github.com/JeysonhT/CultiGestApp/
 
 ## Contribuir
 
-¡Apreciamos tu interés en contribuir a CultiGest! Si deseas hacer una contribución, por favor consulta nuestra [guía de contribución](CONTRIBUTING.md).
+¡Apreciamos tu interés en contribuir a CultiGest!.
 
 ---
 © 2023 CultiGest. Hecho con ❤️ por [Jeysonh](https://github.com/JeysonhT/CultiGestApp).
