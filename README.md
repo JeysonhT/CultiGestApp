@@ -3,7 +3,7 @@ Este repositorio esta dedicado al codigo del backend de la Pagina web Cultigest,
 
 # CultiGest Backend
 
-![Java](https://img.shields.io/badge/Java-11-brightgreen)
+![Java](https://img.shields.io/badge/Java-17-brightgreen)
 ![Spring Boot](https://img.shields.io/badge/Spring%20Boot-2.5.5-brightgreen)
 ![JWT](https://img.shields.io/badge/JWT-1.0.9-blue)
 ![Argon2](https://img.shields.io/badge/Argon2-2.0.17-blue)
