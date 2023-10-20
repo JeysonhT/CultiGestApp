@@ -12,6 +12,9 @@ import org.springframework.stereotype.Repository;
 import com.AgriGest.AgriGestApp.Dao.Interfaces.UserDao;
 import com.AgriGest.AgriGestApp.Models.User;
 
+import de.mkammerer.argon2.Argon2;
+import de.mkammerer.argon2.Argon2Factory;
+
 @Repository
 @Profile("mongodb")
 public class UserDaoImp implements UserDao {
@@ -76,9 +79,21 @@ public class UserDaoImp implements UserDao {
 
     //metodo de Inicio de sesion para usuarios previamente Registrados
     @Override
-    public ResponseEntity<String> LoginUser() {
+    public User VerificarUser(User user) {
+        Query query = new Query();
+        query.addCriteria(Criteria.where("email"));
 
-        return ResponseEntity.ok("pendiente");    
+        List<User> lista = operations.find(query, User.class, "User");
+
+        if(lista.isEmpty()){
+            return null;
+        }
+
+        String hashPass = lista.get(0).getPassword();
+        Argon2 argon2 = Argon2Factory.create(Argon2Factory.Argon2Types.ARGON2id);
+
+        return argon2.verify(hashPass, user.getPassword()) ? lista.get(0) : null;    
     }
 
+    
 }
