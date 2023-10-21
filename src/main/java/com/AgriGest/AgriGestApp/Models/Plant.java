@@ -8,7 +8,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter 
-@Document("Plant")
+@Document(collection = "Plant")
 public class Plant {
     
     @MongoId

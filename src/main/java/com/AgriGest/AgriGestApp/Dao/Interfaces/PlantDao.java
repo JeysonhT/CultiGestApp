@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.AgriGest.AgriGestApp.Models.Plant;
+import com.AgriGest.AgriGestApp.Models.PlantDto;
 import com.AgriGest.AgriGestApp.Models.User;
 
 public interface PlantDao {
@@ -13,6 +14,6 @@ public interface PlantDao {
 
     void DeletePlant(String Id);
 
-    ResponseEntity<String> postPlant(Plant plant);
+    ResponseEntity<String> postPlant(PlantDto plantDto);
 
 }

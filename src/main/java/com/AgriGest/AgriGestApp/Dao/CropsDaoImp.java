@@ -11,6 +11,7 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Repository;
 import com.AgriGest.AgriGestApp.Dao.Interfaces.CropsDao;
 import com.AgriGest.AgriGestApp.Models.Crops;
+import com.AgriGest.AgriGestApp.Models.CropsDto;
 import com.AgriGest.AgriGestApp.Models.User;
 
 @Repository
@@ -36,14 +37,15 @@ public class CropsDaoImp implements CropsDao{
     }
 
     /*
-     * Este metodo se encarga de resgirtar un nuevo cultivo, asociandolo a un usuario buscado
+     * Este metodo se encarga de resgistrar un nuevo cultivo, asociandolo a un usuario buscado
      * el email en la coleccion de usuarios para asociarlo como un objeto dentro del documento
      * del cultivo en MongoDb.
      */
     @Override
-    public ResponseEntity<String> postCrops(Crops crops, String email) {
+    public ResponseEntity<String> postCrops(CropsDto dto) {
+        Crops crops = new Crops();
         Query query = new Query();
-        query.addCriteria(Criteria.where("Email").is(email));
+        query.addCriteria(Criteria.where("Email").is(dto.getEmail()));
 
         List<User> usuario = operations.find(query, User.class);
 
@@ -51,6 +53,9 @@ public class CropsDaoImp implements CropsDao{
             return ResponseEntity.badRequest().body("usuario no encontrado");
         }
 
+        crops.setName(dto.getName());
+        crops.setAreacultivo(dto.getAreacultivo());
+        crops.setSeedtime(dto.getSeedtime());
         crops.setUsuario(usuario.get(0));
 
         operations.save(crops, "Crops");

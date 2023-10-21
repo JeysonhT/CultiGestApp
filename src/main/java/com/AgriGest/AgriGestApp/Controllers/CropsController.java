@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.AgriGest.AgriGestApp.Dao.Interfaces.CropsDao;
 import com.AgriGest.AgriGestApp.Models.Crops;
+import com.AgriGest.AgriGestApp.Models.CropsDto;
 import com.AgriGest.AgriGestApp.Models.User;
 import com.AgriGest.AgriGestApp.Utils.JWTUtil;
 
@@ -41,11 +42,11 @@ public class CropsController {
     }
 
     @PostMapping(value = "api/Crops")
-    public ResponseEntity<String> postCrops(@RequestHeader("Authorization") String token, @RequestBody Crops crops, @RequestBody String email){
+    public ResponseEntity<String> postCrops(@RequestHeader("Authorization") String token, @RequestBody CropsDto dto){
         if(!validarToken(token)){
             return ResponseEntity.badRequest().body("No estas autorizado");
         }else{
-            return cropsDao.postCrops(crops, email);
+            return cropsDao.postCrops(dto);
         }
     }
 
