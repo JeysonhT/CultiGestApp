@@ -2,6 +2,8 @@ package com.AgriGest.AgriGestApp.Dao.Interfaces;
 
 import java.util.List;
 import org.springframework.http.ResponseEntity;
+
+import com.AgriGest.AgriGestApp.Models.LoginDto;
 import com.AgriGest.AgriGestApp.Models.User;
 
 public interface UserDao{
@@ -14,6 +16,6 @@ public interface UserDao{
 
     ResponseEntity<String> postUser(User user);
 
-    User VerificarUser(User user);
+    User VerificarUser(LoginDto loginDto);
 
 }

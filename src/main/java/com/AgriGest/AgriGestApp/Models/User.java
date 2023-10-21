@@ -22,19 +22,17 @@ public class User {
     private String Email;
     @Field("password")
     private String Password;
-    @Field("isAgronomist")
-    private boolean isAgronomist;
     
     public User() {
     }
 
-    public User(String id, String name, String lastname, String email, String password, boolean isAgronomist) {
+    public User(String id, String name, String lastname, String email, String password) {
         Id = id;
         Name = name;
         Lastname = lastname;
         Email = email;
         Password = password;
-        this.isAgronomist = isAgronomist;
+        
     }
     
 
