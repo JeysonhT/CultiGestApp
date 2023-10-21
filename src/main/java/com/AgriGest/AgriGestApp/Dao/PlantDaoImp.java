@@ -12,11 +12,12 @@ import org.springframework.stereotype.Repository;
 
 import com.AgriGest.AgriGestApp.Dao.Interfaces.PlantDao;
 import com.AgriGest.AgriGestApp.Models.Plant;
+import com.AgriGest.AgriGestApp.Models.PlantDto;
 import com.AgriGest.AgriGestApp.Models.User;
-import com.jayway.jsonpath.Criteria;
+import org.springframework.data.mongodb.core.query.Criteria;
 
 @Repository
-@Profile("mongodb")
+@Profile(value = "mongodb")
 public class PlantDaoImp implements PlantDao{
 
     @Autowired
@@ -37,13 +38,26 @@ public class PlantDaoImp implements PlantDao{
     }
 
     @Override
-    public ResponseEntity<String> postPlant(Plant plant) {
-       if(plant != null){
-            operations.save(plant, "Plant");
-            return ResponseEntity.ok("Planta Guardada");
-       }else{
-            return ResponseEntity.badRequest().body("Objeto nulo");
+    public ResponseEntity<String> postPlant(PlantDto plantDto) {
+       Plant plant = new Plant();
+       Query query = new Query();
+       query.addCriteria(Criteria.where("email").is(plantDto.getEmail()));
+
+       List<User> lista = operations.find(query, User.class);
+
+       if(lista.isEmpty()){
+            return ResponseEntity.badRequest().body("El Usuario no existe");
        }
+
+       plant.setName(plantDto.getName());
+       plant.setAreaCultivo(plantDto.getAreacultivo());
+       plant.setPlague(plantDto.getPlague());
+       plant.setLvlFertility(plantDto.getLvlFertility());
+       plant.setPerformance(plantDto.getPerformance());
+
+       plant.setUser(lista.get(0));
+       operations.save(plant, "Plant");
+       return ResponseEntity.ok("status 200");
     }
     
 }

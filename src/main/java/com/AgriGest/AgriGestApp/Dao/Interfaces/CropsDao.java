@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.http.ResponseEntity;
 
 import com.AgriGest.AgriGestApp.Models.Crops;
+import com.AgriGest.AgriGestApp.Models.CropsDto;
 import com.AgriGest.AgriGestApp.Models.User;
 
 public interface CropsDao {
@@ -13,6 +14,6 @@ public interface CropsDao {
 
     void deleteCrops(String Id);
 
-    ResponseEntity<String> postCrops(Crops crops, String email);
+    ResponseEntity<String> postCrops(CropsDto dto);
  
 }
